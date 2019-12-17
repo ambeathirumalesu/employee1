@@ -27,7 +27,7 @@ public class EmployeeDao {
 	}
 	
 	
-	public Optional<Employee> getEmployee(int id) {
-		return erepo.findById(id);
+	public Employee getEmployee(int id) {
+		return erepo.findById(id).get();
 	}
 }

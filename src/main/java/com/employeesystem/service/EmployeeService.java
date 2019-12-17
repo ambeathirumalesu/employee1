@@ -13,6 +13,7 @@ import com.employeesystem.models.Employee;
 import com.employeesystem.repositories.EmployeeRepository;
 
 import java.util.List;
+import java.util.Optional;
 @Service
 public class EmployeeService {
 	@Autowired
@@ -27,20 +28,30 @@ public class EmployeeService {
 		
 		return elist;
 	}
-	public String postEmployee() {
-		Employee emp=new Employee();
-		emp.setId(3);
-		emp.setName("meena");
-		emp.setEmail("meena@gmail.com");
-		emp.setCompany_name("infoys");
-		String result="";
+	public Employee postEmployee(Employee emp) {
+		/*
+		 * Employee emp=new Employee(); emp.setId(4); emp.setName("charan");
+		 * emp.setEmail("charan@gmail.com"); emp.setCompany_name("infoys");
+		 */
+		System.out.println("empservice entered");
 		if(!erpo.existsById(emp.getId())) {
 			erpo.save(emp);
-			result="Employee succesully registed";
+			
 		}
-		else {
-			result="employee is not registed";
+		return emp;
+	}
+	public Employee getEmployee(int id) {
+		Employee emp=null;
+		if(erpo.existsById(id)) {
+		 emp=edao.getEmployee(id);
 		}
-		return result;
+		return emp;
+	}
+	public List getsomeEmployee(int from,int to) {
+		List l=(List) erpo.findAll();
+		
+		List<Employee> someemp=(List) l.stream().filter(emp->(((Employee) emp).getId()>=from && ((Employee) emp).getId()<=to)).collect(Collectors.toList());
+		//System.out.println(someemp);
+		return someemp;
 	}
 }
