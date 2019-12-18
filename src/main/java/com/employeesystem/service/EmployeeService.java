@@ -33,7 +33,11 @@ public class EmployeeService {
 		 * Employee emp=new Employee(); emp.setId(4); emp.setName("charan");
 		 * emp.setEmail("charan@gmail.com"); emp.setCompany_name("infoys");
 		 */
+<<<<<<< HEAD
 		//System.out.println("empservice entered");
+=======
+		System.out.println("empservice entered");
+>>>>>>> 13410f3b72eee15241386d28bdc81dcd61735e5b
 		if(!erpo.existsById(emp.getId())) {
 			erpo.save(emp);
 			

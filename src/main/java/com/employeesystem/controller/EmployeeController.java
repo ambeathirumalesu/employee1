@@ -8,7 +8,10 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
+<<<<<<< HEAD
 import org.springframework.http.ResponseEntity;
+=======
+>>>>>>> 13410f3b72eee15241386d28bdc81dcd61735e5b
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,8 +34,13 @@ import java.util.Optional;
 @NoArgsConstructor
 public class EmployeeController 
 {
+<<<<<<< HEAD
 	
 	
+=======
+	
+
+>>>>>>> 13410f3b72eee15241386d28bdc81dcd61735e5b
 	private EmployeeService eservice;
 
 	@RequestMapping(value="/getallemployees",method=RequestMethod.GET)
@@ -52,6 +60,7 @@ public class EmployeeController
 		}
 		
 		return emp;
+<<<<<<< HEAD
 	}
 	@GetMapping(value="/getsomeemployee")
 	public List<Employee> getsomeemployee(@RequestParam("from") int from,@RequestParam int to) {
@@ -65,6 +74,21 @@ public class EmployeeController
 		System.out.println("controlled executed");
 		Employee e=eservice.postEmployee(emp);
 	        return new ResponseEntity<Object>(e,HttpStatus.CREATED);
+=======
+	}
+	@GetMapping(value="/getsomeemployee")
+	public List<Employee> getsomeemployee(@RequestParam("from") int from,@RequestParam int to) {
+		
+		
+		return eservice.getsomeEmployee(from, to);
+	}
+	@PostMapping(value="/posthello",consumes = MediaType.APPLICATION_JSON_VALUE,produces ="application/json")
+	 public Employee postResponseController(
+		      @RequestBody Employee emp) {
+		System.out.println("controlled executed");
+		//Employee e=;
+	        return eservice.postEmployee(emp) ;
+>>>>>>> 13410f3b72eee15241386d28bdc81dcd61735e5b
 	}
 	@GetMapping(value="/helloworld")
 	public String helloworld() {

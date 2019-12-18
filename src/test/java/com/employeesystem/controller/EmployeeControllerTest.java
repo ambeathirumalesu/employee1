@@ -163,18 +163,30 @@ class EmployeeControllerTest {
 	@Test
 	void postEmployee() throws Exception {
 		
+<<<<<<< HEAD
 		Employee empSaved=new Employee();
 		empSaved.setName("priya kumari");
 		empSaved.setEmail("priya@gmail.com");
 		empSaved.setCompany_name("globallogic");
 		empSaved.setId(7);
 		
+=======
+		Employee emp=new Employee();
+		emp.setId(7);
+		emp.setName("priya kumari");
+		emp.setEmail("priya@gmail.com");
+		emp.setCompany_name("globallogic");
+		Gson g=new Gson();
+		String jsons=g.toJson(emp);
+		when(empservice.postEmployee(emp)).thenReturn(emp);
+>>>>>>> 13410f3b72eee15241386d28bdc81dcd61735e5b
 		
 		//System.out.println(jsons);
 		/* ObjectMapper mapper = new ObjectMapper();
 		    mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
 		    ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
 		    String requestJson=ow.writeValueAsString(emp);*/
+<<<<<<< HEAD
 		when(empservice.postEmployee(Mockito.any(Employee.class))).thenReturn(empSaved);
 
 		RequestBuilder request=MockMvcRequestBuilders.post("/posthello").contentType(MediaType.APPLICATION_JSON).content(asJsonString(empSaved));
@@ -202,6 +214,30 @@ class EmployeeControllerTest {
 		}
 	}
 
+=======
+		
+		RequestBuilder request=MockMvcRequestBuilders.post("/posthello").contentType(MediaType.APPLICATION_JSON).content(jsons);
+		MvcResult result=mockmvc.perform(request).andExpect(status().isOk()).andReturn();
+		String stresult=result.getResponse().getContentAsString();
+		
+		System.out.println(g.fromJson(stresult, Employee.class));
+		
+		Employee acuval=g.fromJson(stresult, Employee.class);
+		System.out.println(acuval);
+	/*	assertAll("acuval",
+				()->{assertNotNull(acuval);},
+				()->{assertEquals(acuval.getEmail(),emp.getEmail());},
+				()->{assertTrue(acuval.getId()==emp.getId());},
+				()->{assertTrue(acuval.getCompany_name().equalsIgnoreCase(emp.getCompany_name()));}
+		
+				
+				);
+		*/
+		
+		
+	}
+	
+>>>>>>> 13410f3b72eee15241386d28bdc81dcd61735e5b
 	@Test
 	public void helloworld() throws Exception{
 		
