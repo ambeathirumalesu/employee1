@@ -97,7 +97,27 @@ class EmployeeServiceTest {
 		);
 		
 	}
+<<<<<<< HEAD
 	
+=======
+<<<<<<< HEAD
+	
+=======
+	//test case 2 for the postemploye method
+	@Test
+	void testPostEmployee2() {
+		Employee emp=new Employee();
+		emp.setId(10);
+		emp.setName("priya kumar");
+		emp.setEmail("priyakumar@gmail.com");
+		emp.setCompany_name("globallogic1");
+		when(emprpo.existsById(emp.getId())).thenReturn(true);
+		Employee result=empservice.postEmployee(emp);
+		assertEquals("employee alredy registed", result);
+		
+	}
+>>>>>>> 13410f3b72eee15241386d28bdc81dcd61735e5b
+>>>>>>> e98d030e731edc1c483f653c8ed8cc75504c9ce4
 	
 	//test case 1 for getemployee method in EmployeeService 
 	@Test

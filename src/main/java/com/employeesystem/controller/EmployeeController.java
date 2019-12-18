@@ -8,11 +8,20 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
+<<<<<<< HEAD
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+=======
+<<<<<<< HEAD
+import org.springframework.http.ResponseEntity;
+=======
+>>>>>>> 13410f3b72eee15241386d28bdc81dcd61735e5b
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+>>>>>>> e98d030e731edc1c483f653c8ed8cc75504c9ce4
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,11 +42,22 @@ import java.util.Optional;
 @NoArgsConstructor
 public class EmployeeController 
 {
+<<<<<<< HEAD
 	
 	
 	private EmployeeService eservice;
 	
 	
+=======
+<<<<<<< HEAD
+	
+	
+=======
+	
+
+>>>>>>> 13410f3b72eee15241386d28bdc81dcd61735e5b
+	private EmployeeService eservice;
+>>>>>>> e98d030e731edc1c483f653c8ed8cc75504c9ce4
 
 	@RequestMapping(value="/getallemployees",method=RequestMethod.GET)
 	public List<Employee> getAllEmployees() {
@@ -56,12 +76,17 @@ public class EmployeeController
 		}
 		
 		return emp;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e98d030e731edc1c483f653c8ed8cc75504c9ce4
 	}
 	@GetMapping(value="/getsomeemployee")
 	public List<Employee> getsomeemployee(@RequestParam("from") int from,@RequestParam int to) {
 		
 		
 		return eservice.getsomeEmployee(from, to);
+<<<<<<< HEAD
 	}
 	@PostMapping(value="/posthello",consumes = MediaType.APPLICATION_JSON_VALUE,produces ="application/json")
 	 public ResponseEntity<Object> postResponseController(
@@ -86,6 +111,31 @@ public class EmployeeController
 	}
 	
 	
+=======
+	}
+	@PostMapping(value="/posthello",consumes = MediaType.APPLICATION_JSON_VALUE,produces ="application/json")
+	 public ResponseEntity<Object> postResponseController(
+		      @RequestBody Employee emp) {
+		System.out.println("controlled executed");
+		Employee e=eservice.postEmployee(emp);
+	        return new ResponseEntity<Object>(e,HttpStatus.CREATED);
+=======
+	}
+	@GetMapping(value="/getsomeemployee")
+	public List<Employee> getsomeemployee(@RequestParam("from") int from,@RequestParam int to) {
+		
+		
+		return eservice.getsomeEmployee(from, to);
+	}
+	@PostMapping(value="/posthello",consumes = MediaType.APPLICATION_JSON_VALUE,produces ="application/json")
+	 public Employee postResponseController(
+		      @RequestBody Employee emp) {
+		System.out.println("controlled executed");
+		//Employee e=;
+	        return eservice.postEmployee(emp) ;
+>>>>>>> 13410f3b72eee15241386d28bdc81dcd61735e5b
+	}
+>>>>>>> e98d030e731edc1c483f653c8ed8cc75504c9ce4
 	@GetMapping(value="/helloworld")
 	public String helloworld() {
 		
